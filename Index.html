@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PizzaButton — Donations</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        background-color: #f7f7f7;
+    }
+    h1 {
+        margin-bottom: 10px;
+    }
+    .button {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 10px;
+        font-size: 18px;
+        color: white;
+        background-color: #FF813F;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #e96e2d;
+    }
+    #btc-container {
+        margin-top: 20px;
+        display: none;
+    }
+    #btc-address {
+        font-family: monospace;
+        background-color: #eee;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    img.qr {
+        margin-top: 10px;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+</head>
+<body>
+    <h1>Support My Work</h1>
+    <p>Every contribution helps keep this project alive 🚀</p>
+
+    <!-- Buy Me a Coffee -->
+    <a class="button" href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank">
+        ☕ Buy Me a Coffee
+    </a>
+
+    <!-- Bitcoin Donation -->
+    <button class="button" onclick="toggleBTC()">₿ Donate Bitcoin</button>
+
+    <div id="btc-container">
+        <p>Send BTC to:</p>
+        <div id="btc-address">1JdMoFe3Jr2nijUxBfgUByWktBQFK2qAqq</div>
+        <img class="qr" src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=bitcoin:1JdMoFe3Jr2nijUxBfgUByWktBQFK2qAqq" alt="BTC QR Code">
+        <br>
+        <button class="button" onclick="copyBTC()">📋 Copy Address</button>
+    </div>
+
+<script>
+function toggleBTC() {
+    const container = document.getElementById('btc-container');
+    container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
+}
+function copyBTC() {
+    const address = document.getElementById('btc-address').innerText;
+    navigator.clipboard.writeText(address).then(() => {
+        alert("BTC address copied!");
+    });
+}
+</script>
+</body>
+</html>
